@@ -11,8 +11,7 @@ A new Flutter project.
     - 扩展Row、Column或Flex 的子级以便子级填充可用空间的小部件。
       使用Expanded小部件可以使Row、Column或Flex 的子项 扩展以填充沿主轴的可用空间（例如，水平用于Row或垂直用于Column）。如果扩展了多个子项，则根据弹性系数在它们之间分配可用空间。
       一个扩展插件必须是一个的后代行，列，或柔性，和路径从扩展插件到其封闭行，列，或 柔性必须只包含StatelessWidget S或StatefulWidget秒（而不是其他类型的小部件，像RenderObjectWidget小号）。
-    -![https://www.liondance.cn/files/public/img.png](img.png)  
-      
+    - ![效果展示](https://www.liondance.cn/files/public/img.png "效果展示")
 - Wrap
     - 在多个水平或垂直运行中显示其子项的小部件。
       甲裹勾画出每个子并尝试放置由下式给出相邻于主轴线的前一个子子，方向，留下间隔 之间的空间。如果没有足够的空间容纳子项，Wrap 会在横轴中与现有子项相邻的位置创建一个新运行。
