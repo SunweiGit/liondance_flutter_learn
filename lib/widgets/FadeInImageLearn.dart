@@ -44,7 +44,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 SliverChildBuilderDelegate((BuildContext context, int index) {
               return FadeInImage(
                 // here `bytes` is a Uint8List containing the bytes for the in-memory image
-                placeholder: AssetImage("images/img.png"),
+                placeholder: AssetImage("images/img_22.png"),
                 image: const NetworkImage('https://images.pexels.com/photos/8035729/pexels-photo-8035729.jpeg?cs=srgb&dl=pexels-monica-turlui-8035729.jpg&fm=jpg'),
               );
             }, childCount: 12),

@@ -21,7 +21,8 @@ A new Flutter project.
       浏览量首先构造，并且PageController.viewportFraction，这就决定了页作为视口尺寸的一小部分的大小。
       ![https://www.liondance.cn/files/public/img_3.png](https://www.liondance.cn/files/public/img_3.png) ![https://www.liondance.cn/files/public/img_4.png](https://www.liondance.cn/files/public/img_4.png)
 - Table
-    - 为其子项使用表格布局算法的小部件。 -![https://www.liondance.cn/files/public/img_5.png](https://www.liondance.cn/files/public/img_5.png)
+    - 为其子项使用表格布局算法的小部件。
+      -![https://www.liondance.cn/files/public/img_5.png](https://www.liondance.cn/files/public/img_5.png)
 
 - SliverAppBar
     - Sliver 应用栏通常用作CustomScrollView的第一个子项
@@ -74,11 +75,61 @@ A new Flutter project.
 - Tooltip
     - 工具提示提供文本标签，有助于解释按钮或其他用户界面操作的功能。将按钮包裹在Tooltip小部件中，并提供一条消息，该消息将在长按小部件时显示。 许多小部件（例如IconButton、FloatingActionButton和
       PopupMenuButton ）都有一个tooltip属性，当该属性为非空时，会导致小部件在其构建中包含工具提示。 工具提示通过证明小部件的文本表示来提高可视小部件的可访问性，例如，可以由屏幕阅读器发出声音。
-      -![https://www.liondance.cn/files/public/img_19.png](https://www.liondance.cn/files/public/img_19.png)
+
+    - ![https://www.liondance.cn/files/public/img_19.png](https://www.liondance.cn/files/public/img_19.png)
 
 - FittedBox
-    - 根据fit缩放和定位它的孩子。 -![https://www.liondance.cn/files/public/img_21.png](https://www.liondance.cn/files/public/img_21.png)
+    - 根据fit缩放和定位它的孩子。
+    - ![https://www.liondance.cn/files/public/img_21.png](https://www.liondance.cn/files/public/img_21.png)
+- LayoutBuilder
+    - 构建一个可以依赖于父小部件大小的小部件树。 类似于Builder小部件，除了框架
+      在布局时调用builder函数并提供父小部件的约束。当父级限制子级的大小并且不依赖于子级的内在大小时，这很有用。该LayoutBuilder的最终规模将匹配其孩子的大小。 该生成器函数被调用在以下几种情况：
+        - 第一次布置小部件。
+        - 当父小部件传递不同的布局约束时。
+        - 当父小部件更新此小部件时。
+        - 当构建器函数订阅的依赖项发生变化时。
+        - 该生成器功能没有如果父母多次通过相同的约束布局过程中调用。
+    - ![img_1.png](https://www.liondance.cn/files/public/img_22.png) ![img_1.png](https://www.liondance.cn/files/public/img_23.png)
+- AbsorbPointer
+    - 此小部件通过终止自身的命中来防止其子树接收事件。它在布局过程中仍然消耗空间并像往常一样绘制它的子元素。它只是防止它的孩子成为定位事件的目标，因为它从RenderBox.hitTest返回 true 。
+    - ![img.png](https://www.liondance.cn/files/public/img_24.png)
+- Transform
+    - Transform其子Widget绘制时外面包着矩阵变换（transformation），通过它可以实现各种矩阵操作。
+    - ![img.png](https://www.liondance.cn/files/public/img_25.png)
+- BackdropFilter
+    - 将过滤器应用于现有绘制内容然后绘制child 的小部件。 过滤器将应用于其父或祖先小部件剪辑中的所有区域。如果没有剪辑，过滤器将应用于全屏。
+    - ![img_1.png](https://www.liondance.cn/files/public/img_26.png)
 
+- Align
+    - 一个小部件，可将其子项与其自身对齐，并可选择根据子项的大小调整自身大小。 例如，要在右下角对齐一个框，您可以向这个框传递一个比孩子自然尺寸大的约束，
+    - ![img.png](https://www.liondance.cn/files/public/img_27.png)
+
+- Positioned
+    - 控制Stack的子项所在位置的小部件。 定位插件必须是一个的后代堆栈，并从所述路径定位插件其包围堆栈只能包含 StatelessWidget S或StatefulWidget秒（而不是其他类型的小部件，像
+      RenderObjectWidget多个）。
+    - ![img.png](https://www.liondance.cn/files/public/img_28.png)
+
+- AnimatedBuilder
+    - 用于构建动画的通用小部件。 AnimatedBuilder 对于希望包含动画作为更大构建函数的一部分的更复杂的小部件很有用。要使用 AnimatedBuilder，只需构造小部件并将其传递给构建器函数即可。
+      对于没有附加状态的简单情况，请考虑使用 AnimatedWidget。
+    - ![img.png](https://www.liondance.cn/files/public/img.png)
+
+- Dismissible
+    - 可以通过在指定方向拖动来关闭的小部件。 在DismissDirection 中拖动或抛出这个小部件会导致孩子滑出视图。以下滑动动画，如果resizeDuration为非空，则可取消插件在动画其高度（或宽度，取垂直于驳回方向）为零resizeDuration。
+    - ![img_1.png](https://www.liondance.cn/files/public/img_1.png)
+- Box
+    - 具有指定尺寸的盒子。 如果给定一个孩子，这个小部件会强制它具有特定的宽度和/或高度。如果此小部件的父级不允许，这些值将被忽略。例如，如果父项是屏幕（强制子项与父项的大小相同）或另一个SizedBox（强制其子项具有特定的宽度和/或高度），则会发生这种情况。这可以通过将子SizedBox包装在一个小部件中来解决，该小部件允许它的大小不超过父级的任何大小，例如Center或Align。
+如果宽度或高度为空，则此小部件将尝试调整自身大小以匹配该维度中孩子的大小。如果孩子的尺寸取决于其父母的尺寸，则必须提供高度和宽度。
+如果没有给定一个孩子，SizedBox将尝试在给定父级约束的情况下尽可能接近指定的高度和宽度。如果 高度或宽度为空或未指定，则将其视为零。
+该新SizedBox.expand构造可以用来制造SizedBox该尺寸本身，以适应父。相当于将width和 height设置为double.infinity。
+    - ![img.png](https://www.liondance.cn/files/public/img_31.png)
+    
+-   ValueListenableBuilder
+    - 其内容与ValueListenable保持同步的小部件。 给定ValueListenable<T>和从 的具体值构建小部件的构建器T，此类将自动将自己注册为ValueListenable的侦听器，并在值更改时使用更新的值调用构建器。如果您将预构建的子树作为子参数传递，则 ValueListenableBuilder会将其传递回您的构建器函数，以便您可以将其合并到您的构建中。 
+      使用这个预先构建的孩子是完全可选的，但在某些情况下可以显着提高性能，因此是一种很好的做法。
+    - ![img.png](https://www.liondance.cn/files/public/img_30.png)
+
+      
 ## Getting Started
 
 This project is a starting point for a Flutter application.
