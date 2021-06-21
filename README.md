@@ -149,7 +149,37 @@ A new Flutter project.
       的子级灵活地扩展以填充主轴上的可用空间（例如，水平用于Row或垂直用于Column），但是，与Expanded不同的是 ，Flexible不会要求孩子填满可用空间。
       甲弹性插件必须是一个的后代行，列，或柔性，并从所述路径弹性部件到它的封闭行，列，或 柔性必须只包含StatelessWidget
       S或StatefulWidget秒（而不是其他类型的小部件，像RenderObjectWidget小号）
-    - 
+    - ![img.png](https://www.liondance.cn/files/public/img_34.png)
+
+
+- MediaQuery
+    - 查询解析给定数据。 例如，要了解当前媒体的大小（例如，包含您的应用程序窗口），您可以读取MediaQueryData.size酒店需要从MediaQueryData返回由MediaQuery.of： MediaQuery.of(
+      context).size。 使用MediaQuery.of查询当前媒体将导致您的小部件在MediaQueryData更改时自动重建（例如，如果用户旋转他们的设备）。
+      如果没有MediaQuery在范围内，则MediaQuery.of方法将抛出异常。或者，可以使用MediaQuery.maybeOf，如果没有MediaQuery在范围内，它返回 null 而不是抛出。
+    - ![img.png](img.png)
+
+- Spacer
+    - Spacer 创建一个可调整的空间隔器，可用于调整Flex容器中小部件之间的间距，例如Row或Column。 该间隔部件将占用任何可用空间，所以设置 Flex.mainAxisAlignment包含在柔性容器间隔以
+      MainAxisAlignment.spaceAround，MainAxisAlignment.spaceBetween，或 MainAxisAlignment.spaceEvenly不会有任何明显的效果：
+      间隔已采取了一切的额外空间，因此没有剩余空间可以重新分配。
+    - ![img_1.png](img_1.png)
+
+- InheritedWidget
+    - 有效地沿树向下传播信息的小部件的基类。 要从构建上下文获取特定类型的继承小部件的最近实例，请使用BuildContext.dependOnInheritedWidgetOfExactType。
+      继承的小部件，当以这种方式引用时，将导致消费者在继承的小部件本身改变状态时重建。
+
+
+- AnimatedIcon
+    - 麻烦，改天研究下
+
+- AspectRatio
+    - 子项调整为特定的纵横比。 小部件首先尝试布局约束允许的最大宽度。小部件的高度是通过将给定的纵横比应用于宽度来确定的，表示为宽度与高度的比率。 例如，16:9 宽高比的值为
+      16.0/9.0。如果最大宽度为无限大，则通过将纵横比应用于最大高度来确定初始宽度。
+    - ![img_2.png](img_2.png)
+
+- 
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
