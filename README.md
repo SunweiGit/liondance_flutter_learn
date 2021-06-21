@@ -115,21 +115,41 @@ A new Flutter project.
     - ![img.png](https://www.liondance.cn/files/public/img.png)
 
 - Dismissible
-    - 可以通过在指定方向拖动来关闭的小部件。 在DismissDirection 中拖动或抛出这个小部件会导致孩子滑出视图。以下滑动动画，如果resizeDuration为非空，则可取消插件在动画其高度（或宽度，取垂直于驳回方向）为零resizeDuration。
+    - 可以通过在指定方向拖动来关闭的小部件。 在DismissDirection
+      中拖动或抛出这个小部件会导致孩子滑出视图。以下滑动动画，如果resizeDuration为非空，则可取消插件在动画其高度（或宽度，取垂直于驳回方向）为零resizeDuration。
     - ![img_1.png](https://www.liondance.cn/files/public/img_1.png)
 - Box
-    - 具有指定尺寸的盒子。 如果给定一个孩子，这个小部件会强制它具有特定的宽度和/或高度。如果此小部件的父级不允许，这些值将被忽略。例如，如果父项是屏幕（强制子项与父项的大小相同）或另一个SizedBox（强制其子项具有特定的宽度和/或高度），则会发生这种情况。这可以通过将子SizedBox包装在一个小部件中来解决，该小部件允许它的大小不超过父级的任何大小，例如Center或Align。
-如果宽度或高度为空，则此小部件将尝试调整自身大小以匹配该维度中孩子的大小。如果孩子的尺寸取决于其父母的尺寸，则必须提供高度和宽度。
-如果没有给定一个孩子，SizedBox将尝试在给定父级约束的情况下尽可能接近指定的高度和宽度。如果 高度或宽度为空或未指定，则将其视为零。
-该新SizedBox.expand构造可以用来制造SizedBox该尺寸本身，以适应父。相当于将width和 height设置为double.infinity。
+    - 具有指定尺寸的盒子。
+      如果给定一个孩子，这个小部件会强制它具有特定的宽度和/或高度。如果此小部件的父级不允许，这些值将被忽略。例如，如果父项是屏幕（强制子项与父项的大小相同）或另一个SizedBox（强制其子项具有特定的宽度和/或高度），则会发生这种情况。这可以通过将子SizedBox包装在一个小部件中来解决，该小部件允许它的大小不超过父级的任何大小，例如Center或Align。
+      如果宽度或高度为空，则此小部件将尝试调整自身大小以匹配该维度中孩子的大小。如果孩子的尺寸取决于其父母的尺寸，则必须提供高度和宽度。
+      如果没有给定一个孩子，SizedBox将尝试在给定父级约束的情况下尽可能接近指定的高度和宽度。如果 高度或宽度为空或未指定，则将其视为零。
+      该新SizedBox.expand构造可以用来制造SizedBox该尺寸本身，以适应父。相当于将width和 height设置为double.infinity。
     - ![img.png](https://www.liondance.cn/files/public/img_31.png)
-    
--   ValueListenableBuilder
-    - 其内容与ValueListenable保持同步的小部件。 给定ValueListenable<T>和从 的具体值构建小部件的构建器T，此类将自动将自己注册为ValueListenable的侦听器，并在值更改时使用更新的值调用构建器。如果您将预构建的子树作为子参数传递，则 ValueListenableBuilder会将其传递回您的构建器函数，以便您可以将其合并到您的构建中。 
-      使用这个预先构建的孩子是完全可选的，但在某些情况下可以显着提高性能，因此是一种很好的做法。
+
+- ValueListenableBuilder
+    - 其内容与ValueListenable保持同步的小部件。 给定ValueListenable<T>和从
+      的具体值构建小部件的构建器T，此类将自动将自己注册为ValueListenable的侦听器，并在值更改时使用更新的值调用构建器。如果您将预构建的子树作为子参数传递，则
+      ValueListenableBuilder会将其传递回您的构建器函数，以便您可以将其合并到您的构建中。 使用这个预先构建的孩子是完全可选的，但在某些情况下可以显着提高性能，因此是一种很好的做法。
     - ![img.png](https://www.liondance.cn/files/public/img_30.png)
 
-      
+
+- Draggable
+    - 可以从中拖动到DragTarget 的小部件。 当可拖动小部件识别出拖动手势的开始时，它会显示一个反馈小部件，该小部件在屏幕上跟踪用户的手指。如果用户在DragTarget上抬起手指，则该目标有机会接受可拖动对象携带的数据。
+      在多点触控设备上，可以同时发生多次拖动，因为可以同时有多个指针与设备接触。要限制同时拖动的数量，请使用maxSimultaneousDrags属性。默认设置是允许无限数量的同时拖动。 当零拖动正在进行时，此小部件显示子项。如果
+      childWhenDragging不为空，则此小部件会在进行一次或多次拖动时显示 childWhenDragging。否则，此小部件始终显示child。
+    - ![img.png](https://www.liondance.cn/files/public/img_32.png)
+
+- AnimatedList
+    - 一个滚动容器，在插入或移除项目时为项目设置动画。 此小部件的AnimatedListState可用于动态插入或删除项目。来指代AnimatedListState要么提供 GlobalKey或使用静态的方法，从项目的输入回调。
+      这个小部件类似于由ListView.builder创建的小部件。
+    - ![img.png](https://www.liondance.cn/files/public/img_33.png)
+
+- Flexible
+    - 控制Row、Column或Flex的子项如何填充可用空间的小部件。 使用Flexible小部件可以让Row、Column或Flex
+      的子级灵活地扩展以填充主轴上的可用空间（例如，水平用于Row或垂直用于Column），但是，与Expanded不同的是 ，Flexible不会要求孩子填满可用空间。
+      甲弹性插件必须是一个的后代行，列，或柔性，并从所述路径弹性部件到它的封闭行，列，或 柔性必须只包含StatelessWidget
+      S或StatefulWidget秒（而不是其他类型的小部件，像RenderObjectWidget小号）
+    - 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
