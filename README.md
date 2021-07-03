@@ -156,13 +156,13 @@ A new Flutter project.
     - 查询解析给定数据。 例如，要了解当前媒体的大小（例如，包含您的应用程序窗口），您可以读取MediaQueryData.size酒店需要从MediaQueryData返回由MediaQuery.of： MediaQuery.of(
       context).size。 使用MediaQuery.of查询当前媒体将导致您的小部件在MediaQueryData更改时自动重建（例如，如果用户旋转他们的设备）。
       如果没有MediaQuery在范围内，则MediaQuery.of方法将抛出异常。或者，可以使用MediaQuery.maybeOf，如果没有MediaQuery在范围内，它返回 null 而不是抛出。
-    - ![img.png](img.png)
+    - ![img.png](img_35.png)
 
 - Spacer
     - Spacer 创建一个可调整的空间隔器，可用于调整Flex容器中小部件之间的间距，例如Row或Column。 该间隔部件将占用任何可用空间，所以设置 Flex.mainAxisAlignment包含在柔性容器间隔以
       MainAxisAlignment.spaceAround，MainAxisAlignment.spaceBetween，或 MainAxisAlignment.spaceEvenly不会有任何明显的效果：
       间隔已采取了一切的额外空间，因此没有剩余空间可以重新分配。
-    - ![img_1.png](img_1.png)
+    - ![img_1.png](img_35.png)
 
 - InheritedWidget
     - 有效地沿树向下传播信息的小部件的基类。 要从构建上下文获取特定类型的继承小部件的最近实例，请使用BuildContext.dependOnInheritedWidgetOfExactType。
@@ -175,10 +175,80 @@ A new Flutter project.
 - AspectRatio
     - 子项调整为特定的纵横比。 小部件首先尝试布局约束允许的最大宽度。小部件的高度是通过将给定的纵横比应用于宽度来确定的，表示为宽度与高度的比率。 例如，16:9 宽高比的值为
       16.0/9.0。如果最大宽度为无限大，则通过将纵横比应用于最大高度来确定初始宽度。
+    - ![img_2.png](img_36.png)
+
+- LimitedBox
+    - 仅在不受约束时才限制其大小的框。 如果此小部件的最大宽度不受限制，则其子项的宽度将限制为maxWidth。类似地，如果此小部件的最大高度不受限制，则其子项的高度将限制为maxHeight。
+      这具有在无限环境中为孩子提供自然维度的效果。例如，通过为通常尝试尽可能大的小部件提供maxHeight，小部件通常会调整自身大小以适合其父级，但是当放置在垂直列表中时，它将采用给定的高度。
+      这在组合通常尝试匹配其父级大小的小部件时很有用，以便它们在列表（无界）中表现合理。
+    - ![img_3.png](img_37.png)
+
+- Placeholder
+    - 一个小部件，它绘制一个框，表示有一天其他小部件将被添加到哪里。 这个小部件在开发过程中很有用，可以指示界面尚未完成。
+      默认情况下，占位符的大小适合其容器。如果占位符位于无界空间中，它将根据给定的fallbackWidth和fallbackHeight 调整自身大小。
+    - ![img_4.png](img_37.png)
+
+- RichText
+    - 富文本 在富文本使用多个不同风格的小部件显示文本。要显示的文本是使用TextSpan对象树来描述的，每个对象都有一个用于该子树的关联样式。根据布局约束，文本可能会跨多行显示，也可能全部显示在同一行上。
+      RichText小部件中显示的文本必须明确设置样式。在选择要使用的样式时，请考虑使用当前 BuildContext 的DefaultTextStyle .
+      来提供默认值。有关如何在RichText小部件中设置文本样式的更多详细信息，请参阅TextStyle的文档。 考虑使用Text小部件
+      自动与DefaultTextStyle集成。当所有文本使用相同的样式时，默认构造函数就不那么冗长了。该Text.rich构造函数允许使用默认的文本样式，同时还允许每个跨度指定的样式风格多个跨距。 关联
+    - ![img_5.png](img_38.png)
+
+- ReorderableListView
+    - 通过拖动以交互方式重新排序其项目的列表。 此类适用于具有少量子级的视图，因为构建List需要为每个可能显示在列表视图中的子级而不是仅那些实际可见的子级进行工作。 所有列表项都必须有一个键。
+    - ![img_6.png](img_39.png)
+
+- AnimatedSwitcher
+    - 默认情况下在新小部件和之前在AnimatedSwitcher上设置为子部件的小部件之间进行淡入淡出的小部件。如果它们交换得足够快（即在持续时间过去之前），那么在最新的一个正在过渡的同时，可以存在多个先前的孩子并且正在过渡。
+      如果“新”的孩子是一样的小部件类型和密钥“老”的孩子，但使用不同的参数，然后AnimatedSwitcher会不会做他们之间的过渡，因为只要框架而言，它们是相同的部件和可以使用新参数更新现有小部件。要强制转换发生，请在您希望被视为唯一的每个子小部件上设置一个键（通常是小部件数据上的一个ValueKey，可将这个子小部件与其他小部件区分开来）。
+      新孩子可以使用与已经离家出走的孩子相同的密钥；两者不会被认为是相关的。（例如，如果首先显示带有键 A 的进度指示器，然后是带有键 B 的图像，然后又是带有键 A
+      的另一个进度指示器，所有这些都是快速连续的，那么旧的进度指示器和图像将逐渐消失，而新的进度指示器正在消失。） 通过设置 transitionBuilder 可以将过渡类型从交叉淡入淡出更改为自定义过渡。
+    - ![img_7.png](img_40.png) ![img_8.png](img_41.png)
+
+- AnimatedPositioned
+    - Positioned 的动画版本，每当给定的位置发生变化时，它会在给定的持续时间内自动转换孩子的位置。仅当它是Stack的孩子时才有效。
+      如果孩子的大小最终会因此动画而改变，则此小部件是一个不错的选择。如果大小要保持不变，而只是位置随时间变化，则考虑使用
+      SlideTransition。SlideTransition只触发动画的每一帧重绘，而AnimatedPositioned也会触发重新布局。
+    - ![img_9.png](img_42.png)![img_10.png](img_43.png)
+
+- AnimatedPadding
+    - Padding 的动画版本，只要给定的插图发生变化，它就会在给定的持续时间内自动转换缩进。这是使用Curves.fastOutSlowIn曲线 的使用此小部件的示例。
+    - ![img_11.png](img_44.png)![img_12.png](img_45.png)
+
+- IndexedStack
+    - 一个堆栈昭示着从孩子的名单一个孩子。 显示的子项是具有给定索引的子项。堆栈总是和最大的孩子一样大。 如果值为空，则不显示任何内容。点击来进行切换
+    - ![img_13.png](img_46.png) ![img_14.png](img_47.png)
+
+
+- Semantics
+    - 用小部件含义的描述来注释小部件树的小部件。 可访问性工具、搜索引擎和其他语义分析软件使用它来确定应用程序的含义。
+
+
+- ConstrainedBox
+    - 对其子项施加额外约束的小部件。 例如，如果您希望child的最小高度为 50.0 逻辑像素，则可以将其const BoxConstraints(minHeight: 50.0)用作 约束。使用新的
+      SizedBox.expand小部件可以获得相同的行为。
+    - ![img_15.png](img_48.png)
+- Stack
+    - Stack 类表示给定隔离的 Dart 堆栈跟踪的各种组件。
+    - ![img.png](img.png)
+
+- AnimatedOpacity
+    - Opacity 的动画版本，每当给定的不透明度发生变化时，它会在给定的持续时间内自动转换孩子的不透明度。
+    - ![img_1.png](img_1.png)
+
+
+- FractionallySizedBox
+    - 将其子级调整为总可用空间的一小部分的小部件。 如父空间的 widthFactor: 0.5, heightFactor: 0.5, 如下所示
     - ![img_2.png](img_2.png)
-
-- 
-
+- ListView
+    - 线性排列的可滚动小部件列表。
+      可以设置 scrollDirection: 
+      Axis.horizontal 进行水平滚动
+      reverse: true 由下往上滚动
+      -![img_3.png](img_3.png)![img_4.png](img_4.png)
+    
+- Container
 
 ## Getting Started
 
